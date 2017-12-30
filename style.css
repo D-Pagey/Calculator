@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  background-color: pink;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.main-title {
+  text-align: center;
+}
+
+.calculator {
+  margin: 0 auto;
+  width: 350px;
+  height: 350px;
+  background-color: cyan;
+  border: 2px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.display-clear {
+  width: 100%;
+  border: 1px solid red;
+}
+
+.number-buttons {
+  width: 75%;
+  flex-grow: 1;
+  border: 1px solid green;
+}
+
+.operator-buttons {
+  width: 20%;
+  border: 1px solid gold;
+}
