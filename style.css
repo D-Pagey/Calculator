@@ -75,6 +75,7 @@
   flex-grow: 1;
   font-size: 2em;
   background-color: pink;
+  border-color: pink;
 }
 
 .nan-button {
@@ -82,6 +83,7 @@
   flex-grow: 1;
   font-size: 2em;
   background-color: pink;
+  border-color: pink;
 }
 
 .operations {
@@ -96,4 +98,5 @@
 .operator-button {
   font-size: 2em;
   background-color: cyan;
+  border-color: cyan;
 }
