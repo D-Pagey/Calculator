@@ -1,86 +1,87 @@
-let display = document.getElementsByClassName("display");
-display = Array.from(display);
-let clear = document.getElementsByClassName("clear-button");
-clear = Array.from(clear);
-let numBtns = document.getElementsByClassName("number-button");
-numBtns = Array.from(numBtns);
-let operatorBtns = document.getElementsByClassName("operator-button");
-operatorBtns = Array.from(operatorBtns);
-let equals = document.getElementsByClassName("nan-button")[1];
+/**
+ * Selectors
+ */
+const display = Array.from(document.getElementsByClassName("display"));
+const clear = Array.from(document.getElementsByClassName("clear-button"));
+const numBtns = Array.from(document.getElementsByClassName("number-button"));
+const operatorBtns = Array.from(document.getElementsByClassName("operator-button"));
+const equals = Array.from(document.getElementsByClassName("nan-button"));
 
+/**
+ * Variables
+ */
 let operand1 = 0;
 let operand2 = 0;
 let currentState = 1;
 let operator = "";
 
-function stateSwitcher(state) {
-  currentState = (state === 1 ? 2 : 1);
-  return currentState;
-}
+/**
+ * Methods
+ */
+ function stateSwitcher() {
+   currentState = (currentState === 1 ? 2 : 1);
+   return currentState;
+ }
 
-function clearDisplay() {
-  display[0].innerHTML = 0;
-  operand1 = 0;
-  operand2 = 0;
-  currentState = 1;
-  operator = "";
-}
+ function clearDisplay() {
+   display[0].innerHTML = 0;
+   operand1 = 0;
+   operand2 = 0;
+   currentState = 1;
+   operator = "";
+ }
 
+ function createOperands(event) {
+   if (currentState == 1 && operand1 == 0) {
+     operand1 = event.target.getAttribute("data-value");
+     display[0].innerHTML = operand1;
+   }
+   else if (currentState == 1) {
+     operand1 += event.target.getAttribute("data-value");
+     display[0].innerHTML = operand1;
+   }
+   else if (currentState == 2 && operand2 == 0) {
+     operand2 = event.target.getAttribute("data-value");
+     display[0].innerHTML = operand2;
+   }
+   else {
+     operand2 += event.target.getAttribute("data-value");
+     display[0].innerHTML = operand2;
+   }
+ };
+
+ function operatorInput(event) {
+   operator = event.target.getAttribute("data-value");
+   stateSwitcher();
+ }
+
+ function evaluate(event) {
+   console.log(operand1, operator, operand2)
+   let answer = operand1 + operator + operand2
+   console.log(answer);
+   display[0].innerHTML = eval(answer);
+   stateSwitcher();
+ }
+
+/**
+ * Events
+ */
 clear[0].addEventListener("click", clearDisplay);
 
 for (var i = 0; i < numBtns.length; i++) {
-  numBtns[i].addEventListener("click", function(e) {
-    createOperands(e.target);
-  });
+  numBtns[i].addEventListener("click", createOperands);
 }
-
-function createOperands(btn) {
-  if (currentState == 1 && operand1 == 0) {
-    operand1 = btn.getAttribute("data-value");
-    display[0].innerHTML = operand1;
-  }
-  else if (currentState == 1) {
-    operand1 += btn.getAttribute("data-value");
-    display[0].innerHTML = operand1;
-  }
-  else if (currentState == 2 && operand2 == 0) {
-    operand1 = btn.getAttribute("data-value");
-    display[0].innerHTML = operand2;
-  }
-  else {
-    operand2 += btn.getAttribute("data-value");
-    display[0].innerHTML = operand2;
-  }
-};
 
 for (var j = 0; j < operatorBtns.length; j++) {
-  operatorBtns[j].addEventListener("click", function(e) {
-    operatorInput(e.target);
-  })
-}
+   operatorBtns[j].addEventListener("click", operatorInput);
+ }
 
-function operatorInput(btn) {
-  operator += btn.getAttribute("data-value");
-  console.log(operator);
-}
+equals[1].addEventListener("click", evaluate);
 
-equals.addEventListener("click", function(e) {
-  evaluate(e.target);
-});
+// answer = operand1 
 
-function evaluate(btn) {
-  console.log(btn);
-  stateSwitcher(currentState);
-  console.log(operand1);
-  console.log(operand2);
-}
-
-// function to handle buttons
-
-/* problems
-
-1) how to pass argument to event listener function
-2) can pass index within function to new function? e.g. test().
+/*
+can pass index within function to new function? e.g. test().
 
 To understand:
 Event object passed into event listeners
@@ -91,5 +92,7 @@ html data attributes
 e.target
 e
 eval function
+
+add Keyboard shortcuts to calc?
 
 */
