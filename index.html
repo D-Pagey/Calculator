@@ -21,7 +21,7 @@
 
   <div class="display-clear">
     <p class="display">0</p>
-    <button type="button" name="clear" class="clear-button">Clear</button>
+    <button type="button" name="clear" class="clear-button" data-value="0">Clear</button>
   </div>
 
   <section class="number-grid">
@@ -35,23 +35,18 @@
     <button type="button" name="7" class="number-button" data-value="7">7</button>
     <button type="button" name="8" class="number-button" data-value="8">8</button>
     <button type="button" name="9" class="number-button" data-value="9">9</button>
-    <button type="button" name="decimal" class="nan-button">.</button>
-    <button type="button" name="equals" class="nan-button">=</button>
+    <button type="button" name="decimal" class="nan-button" data-value=".">.</button>
+    <button type="button" name="equals" class="nan-button" data-value="=">=</button>
   </section>
 
   <div class="operations">
-    <button type="button" name="add" class="operator-button">+</button>
-    <button type="button" name="subtract" class="operator-button">-</button>
-    <button type="button" name="divide" class="operator-button">*</button>
-    <button type="button" name="multiply" class="operator-button">/</button>
+    <button type="button" name="add" class="operator-button" data-value="+">+</button>
+    <button type="button" name="subtract" class="operator-button" data-value="-">-</button>
+    <button type="button" name="multiply" class="operator-button" data-value="*">*</button>
+    <button type="button" name="divide" class="operator-button" data-value="/">/</button>
   </div>
 
 </main>
-
-<!--
- 1) CSS styling protocols?
-  -->
-
 
     <script type="text/javascript" src="scripts.js"></script>
   </body>
