@@ -14,10 +14,16 @@ let operand1 = 0;
 let operand2 = 0;
 let currentState = 1;
 let operator = "";
+let answer = "";
 
 /**
  * Methods
  */
+function status() {
+  console.log("Operand 1 = " + operand1 + "\nOperator  = " + operator +
+  "\nOperand 2 = " + operand2 + "\n\nAnswer    = " + eval(answer));
+}
+
  function stateSwitcher() {
    currentState = (currentState === 1 ? 2 : 1);
    return currentState;
@@ -26,7 +32,7 @@ let operator = "";
  function clearDisplay() {
    display[0].innerHTML = 0;
    operand1 = 0;
-   operand2 = 0;
+   operand2 = "";
    currentState = 1;
    operator = "";
  }
@@ -40,7 +46,7 @@ let operator = "";
      operand1 += event.target.getAttribute("data-value");
      display[0].innerHTML = operand1;
    }
-   else if (currentState == 2 && operand2 == 0) {
+   else if (currentState == 2 && operand2 == "") {
      operand2 = event.target.getAttribute("data-value");
      display[0].innerHTML = operand2;
    }
@@ -52,22 +58,24 @@ let operator = "";
 
  function operatorInput(event) {
    operator = event.target.getAttribute("data-value");
+   if (operand2) {
+     evaluate();
+   }
    stateSwitcher();
  }
 
- function evaluate(event) {
-   console.log(operand1, operator, operand2)
-   let answer = operand1 + operator + operand2
-   console.log(answer);
+ function evaluate() {
+   answer = operand1 + operator + operand2
    display[0].innerHTML = eval(answer);
    stateSwitcher();
+   status();
+   operand1 = eval(answer);
+   operand2 = "";
  }
 
 /**
  * Events
  */
-clear[0].addEventListener("click", clearDisplay);
-
 for (var i = 0; i < numBtns.length; i++) {
   numBtns[i].addEventListener("click", createOperands);
 }
@@ -76,23 +84,13 @@ for (var j = 0; j < operatorBtns.length; j++) {
    operatorBtns[j].addEventListener("click", operatorInput);
  }
 
+clear[0].addEventListener("click", clearDisplay);
+
 equals[1].addEventListener("click", evaluate);
 
-// answer = operand1 
-
-/*
-can pass index within function to new function? e.g. test().
-
-To understand:
-Event object passed into event listeners
-data attributes
-attach info to buttons/elemtns
-get attributes
-html data attributes
-e.target
-e
-eval function
-
-add Keyboard shortcuts to calc?
-
-*/
+/**
+ * TO DO
+   1) Sort big bug
+   2) Sort decimal point
+   3) Restyle
+ */
