@@ -19,26 +19,22 @@ let answer = "";
 /**
  * Methods
  */
-function status() {
-  console.log("Operand 1 = " + operand1 + "\nOperator  = " + operator +
-  "\nOperand 2 = " + operand2 + "\n\nAnswer    = " + eval(answer));
-}
-
- function stateSwitcher() {
-   currentState = (currentState === 1 ? 2 : 1);
-   return currentState;
- }
-
  function clearDisplay() {
    display[0].innerHTML = 0;
    operand1 = 0;
    operand2 = "";
    currentState = 1;
    operator = "";
+   answer = "";
+ }
+
+ function stateSwitcher() {
+   currentState = (currentState === 1 ? 2 : 1);
+   return currentState;
  }
 
  function createOperands(event) {
-   if (currentState == 1 && operand1 == 0) {
+   if (currentState == 1 && operand1 == 0 || currentState == 1 && operand1 === answer) {
      operand1 = event.target.getAttribute("data-value");
      display[0].innerHTML = operand1;
    }
@@ -57,20 +53,30 @@ function status() {
  };
 
  function operatorInput(event) {
-   operator = event.target.getAttribute("data-value");
-   if (operand2) {
-     evaluate();
+   if (currentState == 1) {
+     operator = event.target.getAttribute("data-value");
+     stateSwitcher();
    }
-   stateSwitcher();
+   else if (currentState == 2) {
+     evaluate();
+     operator = event.target.getAttribute("data-value");
+     stateSwitcher();
+   }
  }
 
  function evaluate() {
-   answer = operand1 + operator + operand2
-   display[0].innerHTML = eval(answer);
+   answer = eval(operand1 + operator + operand2);
+   display[0].innerHTML = answer;
    stateSwitcher();
    status();
-   operand1 = eval(answer);
+   operand1 = answer;
    operand2 = "";
+   operator = "";
+ }
+
+ function status() {
+   console.log("Operand 1 = " + operand1 + "\nOperator  = " + operator +
+   "\nOperand 2 = " + operand2 + "\n\nAnswer    = " + answer);
  }
 
 /**
@@ -90,7 +96,7 @@ equals[1].addEventListener("click", evaluate);
 
 /**
  * TO DO
-   1) Sort big bug
-   2) Sort decimal point
+   1) Sort decimal point
+   2) Add event listeners using forEach
    3) Restyle
  */
