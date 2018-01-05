@@ -91,12 +91,10 @@ for (var j = 0; j < operatorBtns.length; j++) {
  }
 
 clear[0].addEventListener("click", clearDisplay);
-
+equals[0].addEventListener("click", createOperands); // Decimal point
 equals[1].addEventListener("click", evaluate);
 
 /**
  * TO DO
-   1) Sort decimal point
-   2) Add event listeners using forEach
-   3) Restyle
+   1) Add event listeners using forEach
  */
