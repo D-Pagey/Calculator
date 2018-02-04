@@ -97,4 +97,21 @@ equals[1].addEventListener("click", evaluate);
 /**
  * TO DO
    1) Add event listeners using forEach
+   2) Keyboard shortcuts
+   3) Exponential notation
+   4) CSS animations
  */
+
+
+ // Modal Functionality
+ const modalBtn = document.getElementsByClassName('modal-btn');
+ const modal = document.getElementsByClassName('modal-about');
+ const button = document.getElementsByClassName('modal-cancel');
+
+ modalBtn[0].addEventListener('click', function() {
+   modal[0].showModal();
+ });
+
+ button[0].addEventListener('click', function() {
+   modal[0].close();
+ })
