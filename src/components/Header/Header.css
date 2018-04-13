@@ -1,0 +1,15 @@
+.header {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: .65rem;
+    font-weight: 300;
+    margin: 2rem auto;
+    text-align: center;
+    width: 14.5rem;
+}
+
+.title {
+    margin: 0;
+    padding: .65rem 0;
+}
