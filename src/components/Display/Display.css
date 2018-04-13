@@ -1,0 +1,20 @@
+.display-container {
+    background-color: #B4C5E4;
+    border-radius: 5px;
+    height: 4.25rem;
+    width: 90%;
+}
+
+.display {
+    background-color: white;
+    border-radius: 5px;
+    direction: rtl;
+    font-size: 1.25rem;
+}
+
+.clear {
+    background-color: white;
+    border: 0;
+    border-radius: 5px;
+    font-size: 1.25rem;
+}

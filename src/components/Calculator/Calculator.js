@@ -7,7 +7,7 @@ import Numbers from '../Numbers';
 
 function Calculator() {
     return (
-        <main>
+        <main className='calculator'>
             <Display />
             <Operators />
             <Numbers />

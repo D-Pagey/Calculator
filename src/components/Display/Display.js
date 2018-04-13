@@ -4,8 +4,9 @@ import './Display.css';
 
 function Display() {
     return (
-        <div>
-            <p>Display</p>
+        <div className='display-container'>
+            <p className='display'>Display</p>
+            <button className='clear'>Clear</button>
         </div>
     )
 }
