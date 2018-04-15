@@ -5,7 +5,7 @@ import './Display.css';
 function Display() {
     return (
         <div className='display-container'>
-            <p className='display'>Display</p>
+            <p className='display'>0</p>
             <button className='clear'>Clear</button>
         </div>
     )

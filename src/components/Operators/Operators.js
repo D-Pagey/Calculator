@@ -4,8 +4,11 @@ import './Operators.css';
 
 function Operators() {
     return (
-        <div>
-            <p>Operators</p>
+        <div className='operator-container'>
+          <button className='operator'>+</button>
+          <button className='operator'>-</button>
+          <button className='operator'>*</button>
+          <button className='operator'>/</button>
         </div>
     )
 }

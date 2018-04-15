@@ -1,7 +1,9 @@
 .display-container {
     background-color: #B4C5E4;
     border-radius: 5px;
-    height: 4.25rem;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
     width: 90%;
 }
 
@@ -9,7 +11,10 @@
     background-color: white;
     border-radius: 5px;
     direction: rtl;
+    flex-grow: 1;
     font-size: 1.25rem;
+    margin: 0 .75rem 0 0;
+    padding: .25rem .5rem;
 }
 
 .clear {
