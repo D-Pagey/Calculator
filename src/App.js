@@ -10,15 +10,25 @@ class App extends Component {
     super(props);
 
     this.state = {
-
+      operand1: '',
+      operand2: '',
+      mode: '',
+      operator: '',
+      answer: ''
     }
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    console.log(e.target);
   }
 
   render() {
     return (
       <div className="app">
         <Header />
-        <Calculator />
+        <Calculator handleClick={this.handleClick}/>
         <Footer />
       </div>
     );

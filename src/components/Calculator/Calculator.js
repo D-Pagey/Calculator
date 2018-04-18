@@ -5,11 +5,11 @@ import Display from '../Display';
 import Operators from '../Operators';
 import Numbers from '../Numbers';
 
-function Calculator() {
+function Calculator(props) {
     return (
         <main className='calculator'>
             <Display />
-            <Operators />
+            <Operators handleClick={this.props.handleClick}/>
             <Numbers />
         </main>
     )

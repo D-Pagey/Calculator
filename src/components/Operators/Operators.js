@@ -2,10 +2,10 @@ import React from 'react';
 
 import './Operators.css';
 
-function Operators() {
+function Operators(props) {
     return (
         <div className='operator-container'>
-          <button className='operator'>+</button>
+          <button className='operator' onClick={this.props.handleClick}>+</button>
           <button className='operator'>-</button>
           <button className='operator'>*</button>
           <button className='operator'>/</button>
