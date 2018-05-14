@@ -10,28 +10,56 @@ class Calculator extends Component {
         super(props);
 
         this.state = {
-            operand1: 1,
+            operand1: '',
             operand2: '',
-            mode: '',
+            mode: 1,
             operator: '',
-            answer: ''
+            display: ''
           }
 
-    this.handleClick = this.handleClick.bind(this);
+        this.handleNumberClicks = this.handleNumberClicks.bind(this);
+        this.handleOperatorClicks = this.handleOperatorClicks.bind(this);
+        this.evaluate = this.evaluate.bind(this);
     }
 
-    handleClick(e) {
-        this.setState(prevState => ({
-            operand1: prevState.operand1 + 1
-        }))
+    handleNumberClicks(e) {
+        if (this.state.mode === 1) {
+            this.setState({ 
+                operand1: this.state.operand1 + e.target.innerHTML,
+                display: this.state.operand1 + e.target.innerHTML
+            })
+        } else {
+            this.setState({ 
+                operand2: this.state.operand2 + e.target.innerHTML,
+                display: this.state.operand2 + e.target.innerHTML
+            })
+        }
+    }
+
+    handleOperatorClicks(e) {
+        this.setState({ 
+            operator: e.target.innerHTML,
+            mode: 2
+        })
+    }
+
+    evaluate() {
+        this.setState({
+            display: eval(this.state.operand1 + this.state.operator + 
+                this.state.operand2),
+            mode: 1,
+            operand1: ''
+        })
     }
 
     render() {
         return (
             <main className='calculator'>
-                <Display />
-                <Operators handleClick={this.handleClick} />
-                <Numbers handleClick={this.handleClick} />
+                <Display answer={this.state.display}/>
+                <Operators handleClick={this.handleOperatorClicks}/>
+                <Numbers 
+                handleClick={this.handleNumberClicks} 
+                evaluate={this.evaluate} />
             </main>
         )
     }

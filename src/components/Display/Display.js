@@ -2,10 +2,10 @@ import React from 'react';
 
 import './Display.css';
 
-function Display() {
+function Display(props) {
     return (
         <div className='display-container'>
-            <p className='display'>0</p>
+            <p className='display'>{props.answer}</p>
             <button className='clear'>Clear</button>
         </div>
     )

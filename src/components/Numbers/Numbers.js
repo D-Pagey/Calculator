@@ -15,8 +15,8 @@ function Numbers(props) {
           <button className='number' onClick={props.handleClick}>2</button>
           <button className='number' onClick={props.handleClick}>3</button>
           <button className='number' onClick={props.handleClick}>0</button>
-          <button className='symbol' onClick={props.handleClick}>.</button>
-          <button className='symbol' onClick={props.handleClick}>=</button>
+          <button className='symbol'>.</button>
+          <button className='symbol' onClick={props.evaluate}>=</button>
         </div>
     )
 }
