@@ -14,22 +14,33 @@ class Calculator extends Component {
             operand2: '',
             mode: 1,
             operator: '',
-            display: ''
+            display: 0
           }
 
         this.handleNumberClicks = this.handleNumberClicks.bind(this);
         this.handleOperatorClicks = this.handleOperatorClicks.bind(this);
         this.evaluate = this.evaluate.bind(this);
+        this.resetCalculator = this.resetCalculator.bind(this);
+    }
+
+    resetCalculator() {
+      this.setState({
+        operand1: '',
+        operand2: '',
+        mode: 1,
+        operator: '',
+        display: 0
+      })
     }
 
     handleNumberClicks(e) {
         if (this.state.mode === 1) {
-            this.setState({ 
+            this.setState({
                 operand1: this.state.operand1 + e.target.innerHTML,
                 display: this.state.operand1 + e.target.innerHTML
             })
         } else {
-            this.setState({ 
+            this.setState({
                 operand2: this.state.operand2 + e.target.innerHTML,
                 display: this.state.operand2 + e.target.innerHTML
             })
@@ -37,7 +48,7 @@ class Calculator extends Component {
     }
 
     handleOperatorClicks(e) {
-        this.setState({ 
+        this.setState({
             operator: e.target.innerHTML,
             mode: 2
         })
@@ -45,7 +56,7 @@ class Calculator extends Component {
 
     evaluate() {
         this.setState({
-            display: eval(this.state.operand1 + this.state.operator + 
+            display: eval(this.state.operand1 + this.state.operator +
                 this.state.operand2),
             mode: 1,
             operand1: ''
@@ -55,10 +66,10 @@ class Calculator extends Component {
     render() {
         return (
             <main className='calculator'>
-                <Display answer={this.state.display}/>
+                <Display answer={this.state.display} clear={this.resetCalculator} />
                 <Operators handleClick={this.handleOperatorClicks}/>
-                <Numbers 
-                handleClick={this.handleNumberClicks} 
+                <Numbers
+                handleClick={this.handleNumberClicks}
                 evaluate={this.evaluate} />
             </main>
         )
