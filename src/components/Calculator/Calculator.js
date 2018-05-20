@@ -58,8 +58,10 @@ class Calculator extends Component {
         this.setState({
             display: eval(this.state.operand1 + this.state.operator +
                 this.state.operand2),
-            mode: 1,
-            operand1: ''
+            mode: 2,
+            operand1: eval(this.state.operand1 + this.state.operator +
+                this.state.operand2),
+            operand2: ''
         })
     }
 
