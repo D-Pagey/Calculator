@@ -1,30 +1,20 @@
 import React, { Component } from 'react';
 
 import './Calculator.css';
-import Display from '../Display';
-import Operators from '../Operators';
-import Numbers from '../Numbers';
+import Display from '../../Presentational/Display';
+import Operators from '../../Presentational/Operators';
+import Numbers from '../../Presentational/Numbers';
 
 class Calculator extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            operand1: '',
-            operand2: '',
-            mode: 1,
-            operator: '',
-            display: 0
-          }
-
-        this.handleNumberClicks = this.handleNumberClicks.bind(this);
-        this.handleOperatorClicks = this.handleOperatorClicks.bind(this);
-        this.evaluate = this.evaluate.bind(this);
-        this.resetCalculator = this.resetCalculator.bind(this);
-        this.handleEqualsClick = this.handleEqualsClick.bind(this);
+    state = {
+        operand1: '',
+        operand2: '',
+        mode: 1,
+        operator: '',
+        display: 0
     }
 
-    resetCalculator() {
+    resetCalculator = () => {
       this.setState({
         operand1: '',
         operand2: '',
@@ -34,7 +24,7 @@ class Calculator extends Component {
       })
     }
 
-    handleNumberClicks(e) {
+    handleNumberClicks= (e) => {
         if (this.state.mode === 1) {
             this.setState({
                 operand1: this.state.operand1 + e.target.innerHTML,
@@ -48,7 +38,7 @@ class Calculator extends Component {
         }
     }
 
-    handleOperatorClicks(e) {
+    handleOperatorClicks = (e) => {
       if (this.state.mode === 1) {
         this.setState({
             operator: e.target.innerHTML,
@@ -59,7 +49,7 @@ class Calculator extends Component {
       }
     }
 
-    handleEqualsClick() {
+    handleEqualsClick = () => {
       this.evaluate();
       this.setState({
         mode: 1,
@@ -67,7 +57,7 @@ class Calculator extends Component {
       });
     }
 
-    evaluate(e) {
+    evaluate = (e) => {
         this.setState({
             display: eval(this.state.operand1 + this.state.operator +
                 this.state.operand2),
